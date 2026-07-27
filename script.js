@@ -52,7 +52,7 @@ revealEls.forEach(el => {
   observer.observe(el);
 });
 
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzq4lvDQrSXBIELqzIErD6h1DmKZxnXbKZD2NC3BfeOQdjs7dKQRq2vn0Ks4CPHx43lyA/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzPJnNoun3Z2Rf5mo14-CL0lc7CC3cQFOxgbQbyVYjjy6J8DZxHAma9vavfLs6pUhfOlA/exec";
 
 const stars = document.querySelectorAll('.star');
 const starCaption = document.getElementById('starCaption');
