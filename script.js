@@ -54,19 +54,29 @@ revealEls.forEach(el => {
 
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzPJnNoun3Z2Rf5mo14-CL0lc7CC3cQFOxgbQbyVYjjy6J8DZxHAma9vavfLs6pUhfOlA/exec";
 
+const APPS_SCRIPT_URL = "COLLEZ_VOTRE_URL_ICI";
+
 const stars = document.querySelectorAll('.star');
 const starCaption = document.getElementById('starCaption');
 const submitReview = document.getElementById('submitReview');
 const thankMsg = document.getElementById('thankMsg');
-const reviewerName = document.getElementById('reviewerName');
 const reviewsAverage = document.getElementById('reviewsAverage');
 const reviewsCount = document.getElementById('reviewsCount');
 const reviewsList = document.getElementById('reviewsList');
 const consultBtn = document.getElementById('consultReviewsBtn');
 const captions = ['', 'Décevant…', 'Peut mieux faire', 'Bien !', 'Très bien !', 'Excellent ! ✦'];
 
+const reviewModal = document.getElementById('reviewModal');
+const reviewModalOverlay = document.getElementById('reviewModalOverlay');
+const reviewModalClose = document.getElementById('reviewModalClose');
+const modalSubmit = document.getElementById('modalSubmit');
+const modalError = document.getElementById('modalError');
+const modalName = document.getElementById('modalName');
+const modalEmail = document.getElementById('modalEmail');
+const modalAge = document.getElementById('modalAge');
+const modalCity = document.getElementById('modalCity');
+
 let selectedRating = 0;
-let allReviews = [];
 
 stars.forEach(star => {
   star.setAttribute('tabindex', '0');
@@ -108,6 +118,13 @@ function renderStarsText(rating) {
   return '★'.repeat(rounded) + '☆'.repeat(5 - rounded);
 }
 
+function avatarColor(name) {
+  const colors = ['#c49b49', '#2d6a4f', '#7a4f35', '#4a2c1a', '#40916c'];
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  return colors[Math.abs(hash) % colors.length];
+}
+
 function updateBars(reviews) {
   const counts = [0, 0, 0, 0, 0];
   reviews.forEach(r => {
@@ -116,8 +133,10 @@ function updateBars(reviews) {
   const max = Math.max(...counts, 1);
   for (let level = 1; level <= 5; level++) {
     const bar = document.getElementById(`bar-${level}`);
+    const countLabel = document.getElementById(`count-${level}`);
     const pct = (counts[level - 1] / max) * 100;
     bar.style.height = Math.max(pct, 4) + '%';
+    countLabel.textContent = counts[level - 1];
   }
 }
 
@@ -125,9 +144,9 @@ async function loadReviews() {
   if (!reviewsList) return;
   try {
     const res = await fetch(APPS_SCRIPT_URL);
-    allReviews = await res.json();
+    const reviews = await res.json();
 
-    if (allReviews.length === 0) {
+    if (reviews.length === 0) {
       reviewsAverage.textContent = '–';
       reviewsCount.textContent = '(0)';
       updateBars([]);
@@ -135,21 +154,27 @@ async function loadReviews() {
       return;
     }
 
-    const avg = allReviews.reduce((sum, r) => sum + r.rating, 0) / allReviews.length;
+    const avg = reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length;
     reviewsAverage.textContent = avg.toFixed(1).replace('.', ',');
-    reviewsCount.textContent = `(${allReviews.length})`;
-    updateBars(allReviews);
+    reviewsCount.textContent = `(${reviews.length})`;
+    updateBars(reviews);
 
-    reviewsList.innerHTML = allReviews.map(r => `
+    reviewsList.innerHTML = reviews.map(r => {
+      const initial = (r.name || '?').trim().charAt(0).toUpperCase();
+      return `
       <div class="review-item">
-        <div class="review-item__top">
-          <span class="review-item__name">${escapeHtml(r.name)}</span>
+        <div class="review-item__header">
+          <div class="review-item__avatar" style="background:${avatarColor(r.name || '')}">${initial}</div>
+          <span class="review-item__name">${escapeHtml(r.name || 'Client')}</span>
+        </div>
+        <div class="review-item__meta">
           <span class="review-item__stars">${renderStarsText(r.rating)}</span>
+          <span class="review-item__date">${new Date(r.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
         </div>
         ${r.comment ? `<p class="review-item__comment">${escapeHtml(r.comment)}</p>` : ''}
-        <p class="review-item__date">${new Date(r.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
       </div>
-    `).join('');
+    `;
+    }).join('');
   } catch (err) {
     reviewsCount.textContent = 'Erreur de chargement';
   }
@@ -168,53 +193,84 @@ if (consultBtn) {
   });
 }
 
-if (submitReview) {
-  submitReview.addEventListener('click', async () => {
-    const name = reviewerName.value.trim();
+function openReviewModal() {
+  reviewModal.classList.add('open');
+  reviewModalOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  modalError.textContent = '';
+}
 
-    if (!name) {
-      thankMsg.textContent = 'Veuillez indiquer votre nom ✦';
-      thankMsg.style.color = '#c0392b';
-      return;
-    }
+function closeReviewModal() {
+  reviewModal.classList.remove('open');
+  reviewModalOverlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+if (submitReview) {
+  submitReview.addEventListener('click', () => {
     if (!selectedRating) {
       thankMsg.textContent = 'Veuillez choisir une note ✦';
       thankMsg.style.color = '#c0392b';
       return;
     }
-
-    submitReview.disabled = true;
-    thankMsg.textContent = 'Envoi en cours...';
-    thankMsg.style.color = '';
-
-    try {
-      await fetch(APPS_SCRIPT_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({
-          name: name,
-          rating: selectedRating,
-          comment: document.getElementById('reviewText').value.trim()
-        })
-      });
-
-      thankMsg.textContent = 'Merci pour votre avis, cela nous touche ! ✦';
-      reviewerName.value = '';
-      document.getElementById('reviewText').value = '';
-      selectedRating = 0;
-      stars.forEach(s => s.classList.remove('selected'));
-      starCaption.textContent = 'Cliquez pour noter';
-      loadReviews();
-    } catch (err) {
-      thankMsg.textContent = "Une erreur est survenue, réessayez.";
-      thankMsg.style.color = '#c0392b';
-    } finally {
-      submitReview.disabled = false;
-    }
+    thankMsg.textContent = '';
+    openReviewModal();
   });
 }
 
+reviewModalClose.addEventListener('click', closeReviewModal);
+reviewModalOverlay.addEventListener('click', closeReviewModal);
+
+modalSubmit.addEventListener('click', async () => {
+  const name = modalName.value.trim();
+  const email = modalEmail.value.trim();
+  const age = modalAge.value.trim();
+  const city = modalCity.value.trim();
+  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  if (!name) {
+    modalError.textContent = 'Le nom est obligatoire.';
+    return;
+  }
+  if (!email || !emailValid) {
+    modalError.textContent = 'Une adresse email valide est obligatoire.';
+    return;
+  }
+
+  modalSubmit.disabled = true;
+  modalError.textContent = '';
+
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        age: age,
+        ville: city,
+        rating: selectedRating,
+        comment: document.getElementById('reviewText').value.trim()
+      })
+    });
+
+    closeReviewModal();
+    thankMsg.textContent = 'Merci pour votre avis, cela nous touche ! ✦';
+    thankMsg.style.color = '';
+    document.getElementById('reviewText').value = '';
+    selectedRating = 0;
+    stars.forEach(s => s.classList.remove('selected'));
+    starCaption.textContent = 'Cliquez pour noter';
+    modalName.value = '';
+    modalEmail.value = '';
+    modalAge.value = '';
+    modalCity.value = '';
+    loadReviews();
+  } catch (err) {
+    modalError.textContent = "Une erreur est survenue, réessayez.";
+  } finally {
+    modalSubmit.disabled = false;
+  }
+});
+
 loadReviews();
-
-
-
