@@ -144,36 +144,21 @@
 
 <section class="reviews" id="reviews">
   <div class="container">
-    <p class="section-eyebrow center">Témoignages</p>
-    <h2 class="section-title center">Laissez nous un avis</h2>
-
-    <div class="reviews__card">
-      <div class="reviews__card-header">
-        <span>Avis</span>
-        <svg class="reviews__chevron" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-      <div class="reviews__summary-row">
-        <div class="reviews__average-block">
-          <span class="reviews__average" id="reviewsAverage">–</span>
-          <span class="reviews__average-star">★</span>
-        </div>
-        <p class="reviews__count" id="reviewsCount">(0)</p>
-      </div>
-      <div class="reviews__bars" id="reviewsBars">
-        <div class="reviews__bar-col"><div class="reviews__bar" id="bar-1"></div><span>1</span></div>
-        <div class="reviews__bar-col"><div class="reviews__bar" id="bar-2"></div><span>2</span></div>
-        <div class="reviews__bar-col"><div class="reviews__bar" id="bar-3"></div><span>3</span></div>
-        <div class="reviews__bar-col"><div class="reviews__bar" id="bar-4"></div><span>4</span></div>
-        <div class="reviews__bar-col"><div class="reviews__bar" id="bar-5"></div><span>5</span></div>
-      </div>
+    <h2 class="section-title center">Laissez un avis</h2>
+    <div class="reviews__divider">
+      <span class="reviews__divider-icon">🍴</span>
     </div>
 
-    <button class="reviews__consult-btn" id="consultReviewsBtn">Consulter les avis</button>
-    <div class="reviews__list" id="reviewsList" hidden></div>
+    <div class="reviews__block reviews__text-card">
+      <label class="reviews__text-label" for="reviewText">Décrivez votre expérience</label>
+      <textarea class="star-rating__textarea" id="reviewText" placeholder="Partagez votre expérience..."></textarea>
+      <div class="reviews__text-actions">
+        <button class="btn btn--primary" id="submitReview">Envoyer mon avis</button>
+      </div>
+      <p class="star-rating__thanks" id="thankMsg"></p>
+    </div>
 
-    <div class="star-rating">
-      <p class="star-rating__label">Votre avis compte pour nous ✦</p>
-      <input type="text" class="star-rating__name" id="reviewerName" placeholder="Votre nom" required />
+    <div class="reviews__block reviews__stars-card">
       <div class="stars" id="stars">
         <span class="star" data-value="1">★</span>
         <span class="star" data-value="2">★</span>
@@ -182,13 +167,52 @@
         <span class="star" data-value="5">★</span>
       </div>
       <p class="star-rating__caption" id="starCaption">Cliquez pour noter</p>
-      <textarea class="star-rating__textarea" id="reviewText" placeholder="Partagez votre expérience..."></textarea>
-      <button class="btn btn--primary" id="submitReview">Envoyer mon avis</button>
-      <p class="star-rating__thanks" id="thankMsg"></p>
     </div>
+
+    <div class="reviews__block reviews__card">
+      <div class="reviews__card-header"><span>Avis</span></div>
+      <div class="reviews__summary-row">
+        <span class="reviews__average" id="reviewsAverage">–</span>
+        <span class="reviews__average-star">★</span>
+        <p class="reviews__count" id="reviewsCount">(0)</p>
+      </div>
+      <div class="reviews__bars" id="reviewsBars">
+        <div class="reviews__bar-col"><div class="reviews__bar" id="bar-5"></div><span class="reviews__bar-count" id="count-5">0</span><span class="reviews__bar-level">5</span></div>
+        <div class="reviews__bar-col"><div class="reviews__bar" id="bar-4"></div><span class="reviews__bar-count" id="count-4">0</span><span class="reviews__bar-level">4</span></div>
+        <div class="reviews__bar-col"><div class="reviews__bar" id="bar-3"></div><span class="reviews__bar-count" id="count-3">0</span><span class="reviews__bar-level">3</span></div>
+        <div class="reviews__bar-col"><div class="reviews__bar" id="bar-2"></div><span class="reviews__bar-count" id="count-2">0</span><span class="reviews__bar-level">2</span></div>
+        <div class="reviews__bar-col"><div class="reviews__bar" id="bar-1"></div><span class="reviews__bar-count" id="count-1">0</span><span class="reviews__bar-level">1</span></div>
+      </div>
+    </div>
+
+    <button class="reviews__consult-btn" id="consultReviewsBtn">Consulter les avis</button>
+    <div class="reviews__list" id="reviewsList" hidden></div>
   </div>
 </section>
-    
+
+<div class="review-modal-overlay" id="reviewModalOverlay"></div>
+<div class="review-modal" id="reviewModal">
+  <button class="review-modal__close" id="reviewModalClose">✕</button>
+  <h3 class="review-modal__title">Finaliser votre avis</h3>
+  <div class="review-modal__field">
+    <label for="modalName">Nom *</label>
+    <input type="text" id="modalName" />
+  </div>
+  <div class="review-modal__field">
+    <label for="modalEmail">Email *</label>
+    <input type="email" id="modalEmail" />
+  </div>
+  <div class="review-modal__field">
+    <label for="modalAge">Âge (facultatif)</label>
+    <input type="number" id="modalAge" min="1" max="120" />
+  </div>
+  <div class="review-modal__field">
+    <label for="modalCity">Ville (facultatif)</label>
+    <input type="text" id="modalCity" />
+  </div>
+  <p class="review-modal__error" id="modalError"></p>
+  <button class="btn btn--primary review-modal__submit" id="modalSubmit">Confirmer l'envoi</button>
+</div>    
 
 
   <footer class="footer">
