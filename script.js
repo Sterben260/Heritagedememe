@@ -54,8 +54,6 @@ revealEls.forEach(el => {
 
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzPJnNoun3Z2Rf5mo14-CL0lc7CC3cQFOxgbQbyVYjjy6J8DZxHAma9vavfLs6pUhfOlA/exec";
 
-const APPS_SCRIPT_URL = "COLLEZ_VOTRE_URL_ICI";
-
 const stars = document.querySelectorAll('.star');
 const starCaption = document.getElementById('starCaption');
 const submitReview = document.getElementById('submitReview');
