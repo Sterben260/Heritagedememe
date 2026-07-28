@@ -11,7 +11,7 @@
   --white:         #ffffff;
   --font-display:  'Cormorant Garamond', serif;
   --font-body:     'Montserrat', sans-serif;
-  --nav-h:         52px;
+  --nav-h:         118px;
   --radius:        4px;
   --transition:    0.25s ease;
 }
@@ -58,7 +58,7 @@ position:fixed;
 top:0;
 left:0;
 width:100%;
-height:118px;
+height:var(--nav-h);
 
 background:#f8f2e8;
 
@@ -296,11 +296,11 @@ color:#c49b49;
   /* ===== NAVBAR MOBILE ===== */
 
 :root{
-    --nav-height:100px;
+    --nav-h:100px;
 }
 
 .navbar{
-    height:var(--nav-height);
+    height:var(--nav-h);
 }
 
 .navbar__inner{
