@@ -162,21 +162,11 @@
     </div>
   </section>
 
-
 <section class="reviews" id="reviews">
   <div class="container">
     <h2 class="section-title center">Laissez un avis</h2>
     <div class="reviews__divider">
       <span class="reviews__divider-icon">🍴</span>
-    </div>
-
-    <div class="reviews__block reviews__text-card">
-      <label class="reviews__text-label" for="reviewText">Décrivez votre expérience</label>
-      <textarea class="star-rating__textarea" id="reviewText" placeholder="Partagez votre expérience..."></textarea>
-      <div class="reviews__text-actions">
-        <button class="btn btn--primary" id="submitReview">Envoyer mon avis</button>
-      </div>
-      <p class="star-rating__thanks" id="thankMsg"></p>
     </div>
 
     <div class="reviews__block reviews__stars-card">
@@ -188,6 +178,7 @@
         <span class="star" data-value="5">★</span>
       </div>
       <p class="star-rating__caption" id="starCaption">Cliquez pour noter</p>
+      <p class="star-rating__thanks" id="thankMsg"></p>
     </div>
 
     <div class="reviews__block reviews__card">
@@ -211,6 +202,17 @@
   </div>
 </section>
 
+<!-- PANNEAU PLEIN ÉCRAN — commentaire -->
+<div class="review-panel-overlay" id="reviewPanelOverlay"></div>
+<div class="review-panel" id="reviewPanel">
+  <button class="review-panel__close" id="reviewPanelClose">✕</button>
+  <p class="review-panel__stars" id="panelStars"></p>
+  <h3 class="review-panel__title">Décrivez votre expérience <span class="review-panel__optional">(facultatif)</span></h3>
+  <textarea class="star-rating__textarea" id="reviewText" placeholder="Partagez votre expérience..."></textarea>
+  <button class="btn btn--primary review-panel__submit" id="submitReview">Envoyer mon avis</button>
+</div>
+
+<!-- MODALE — coordonnées -->
 <div class="review-modal-overlay" id="reviewModalOverlay"></div>
 <div class="review-modal" id="reviewModal">
   <button class="review-modal__close" id="reviewModalClose">✕</button>
@@ -232,8 +234,8 @@
     <input type="text" id="modalCity" />
   </div>
   <p class="review-modal__error" id="modalError"></p>
-  <button class="btn btn--primary review-modal__submit" id="modalSubmit">Confirmer l'envoi</button>
-</div>    
+  <button class="btn btn--primary review-modal__submit" id="modalSubmit">Publier</button>
+</div>
 
 
   <footer class="footer">
