@@ -248,7 +248,7 @@ background-color: rgba(196,155,73,0.08);
   height: 220px;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: flex-start;
   padding: 10px 28px 0;
   color: var(--gold);
   opacity: 0.85;
@@ -259,7 +259,7 @@ background-color: rgba(196,155,73,0.08);
 .navbar__links-flower-img {
   width: 100%;
   max-width: 220px;
-  height: auto;
+  height: 100%;
   object-fit: cover;
   object-position: top;
   display: block;
