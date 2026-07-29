@@ -197,6 +197,10 @@ overflow: hidden;
 
 }
 
+.navbar__links li.navbar__links-flower {
+  border-bottom: none;
+  padding: 0;
+}
 .navbar__links.open{
 
 right:0;
