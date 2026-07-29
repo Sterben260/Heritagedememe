@@ -233,14 +233,18 @@ function openReviewModal() {
   modalError.textContent = '';
 }
 
-function closeReviewModal() {
+function closeReviewModal(resetRating) {
   reviewModal.classList.remove('open');
   reviewModalOverlay.classList.remove('active');
   document.body.style.overflow = '';
+  if (resetRating) {
+    selectedRating = 0;
+    stars.forEach(s => s.classList.remove('selected'));
+    starCaption.textContent = 'Cliquez pour noter';
+  }
 }
-
-reviewModalClose.addEventListener('click', closeReviewModal);
-reviewModalOverlay.addEventListener('click', closeReviewModal);
+reviewModalClose.addEventListener('click',() => closeReviewModal(true));
+reviewModalOverlay.addEventListener('click',()=> closeReviewModal(true));
 
 modalSubmit.addEventListener('click', async () => {
   const name = modalName.value.trim();
@@ -275,7 +279,7 @@ modalSubmit.addEventListener('click', async () => {
       })
     });
 
-    closeReviewModal();
+    closeReviewModal(false);
     thankMsg.textContent = 'Merci pour votre avis, cela nous touche ! ✦';
     thankMsg.style.color = '';
     document.getElementById('reviewText').value = '';
