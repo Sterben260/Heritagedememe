@@ -193,8 +193,7 @@ transition:.45s;
 
 box-shadow:-8px 0 30px rgba(0,0,0,.08);
 border-radius: 20px 0 0 20px;
-overflow-x: hidden;
-overflow-y: auto;
+overflow: hidden;
 }
 
 .navbar__links li.navbar__links-flower {
@@ -261,6 +260,8 @@ background-color: rgba(196,155,73,0.08);
   width: 100%;
   max-width: 220px;
   height: auto;
+  object-fit: cover;
+  object-position: top;
   display: block;
 }
 
