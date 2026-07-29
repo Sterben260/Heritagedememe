@@ -26,6 +26,9 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  -webkit-tap-highlight-color: transparent;
+}
 html { scroll-behavior: smooth; }
 body { font-family: var(--font-body); background: var(--cream); color: var(--brown-dark); line-height: 1.6; overflow-x: hidden; width: 100%; }
 a { text-decoration: none; color: inherit; }
@@ -400,7 +403,9 @@ background-color: rgba(196,155,73,0.08);
     border-radius: 0;
 
 }
-
+.navbar__links-flower-img {
+  max-width: 180px;
+}
 
 .navbar__links.open{
     right:0;
