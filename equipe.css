@@ -480,14 +480,23 @@
 }
 
 /* ── RESPONSIVE ── */
+
 @media (max-width: 768px) {
+  .side-panel {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
   .side-panel__inner {
     grid-template-columns: 1fr;
-    overflow-y: auto;
+    height: auto;
+    min-height: 100%;
   }
   .side-panel__left {
     height: 60vh;
     flex-shrink: 0;
+  }
+  .side-panel__right {
+    overflow-y: visible;
   }
   .side-panel__competences {
     grid-template-columns: repeat(2, 1fr);
@@ -497,6 +506,7 @@
   .side-panel__competence:nth-child(2) {
     border-bottom: 1px solid rgba(196,155,73,0.2);
   }
+}
 
  
 }
