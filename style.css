@@ -192,6 +192,8 @@ list-style:none;
 transition:.45s;
 
 box-shadow:-8px 0 30px rgba(0,0,0,.08);
+border-radius: 20px 0 0 20px;
+overflow: hidden;
 
 }
 
@@ -358,8 +360,11 @@ background-color: rgba(196,155,73,0.08);
     right:-100%;
     width:100%;
     height:calc(100vh - 80px);
-    padding:40px 30px;
+    padding:40px 0;
+    border-radius: 0;
+
 }
+
 
 .navbar__links.open{
     right:0;
