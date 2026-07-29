@@ -64,6 +64,11 @@ const reviewsList = document.getElementById('reviewsList');
 const consultBtn = document.getElementById('consultReviewsBtn');
 const captions = ['', 'Décevant…', 'Peut mieux faire', 'Bien !', 'Très bien !', 'Excellent ! ✦'];
 
+const reviewPanel = document.getElementById('reviewPanel');
+const reviewPanelOverlay = document.getElementById('reviewPanelOverlay');
+const reviewPanelClose = document.getElementById('reviewPanelClose');
+const panelStars = document.getElementById('panelStars');
+
 const reviewModal = document.getElementById('reviewModal');
 const reviewModalOverlay = document.getElementById('reviewModalOverlay');
 const reviewModalClose = document.getElementById('reviewModalClose');
@@ -75,6 +80,29 @@ const modalAge = document.getElementById('modalAge');
 const modalCity = document.getElementById('modalCity');
 
 let selectedRating = 0;
+
+function renderStarsText(rating) {
+  const rounded = Math.round(rating);
+  return '★'.repeat(rounded) + '☆'.repeat(5 - rounded);
+}
+
+function openReviewPanel() {
+  panelStars.textContent = renderStarsText(selectedRating);
+  reviewPanel.classList.add('open');
+  reviewPanelOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeReviewPanel(resetRating) {
+  reviewPanel.classList.remove('open');
+  reviewPanelOverlay.classList.remove('active');
+  document.body.style.overflow = '';
+  if (resetRating) {
+    selectedRating = 0;
+    stars.forEach(s => s.classList.remove('selected'));
+    starCaption.textContent = 'Cliquez pour noter';
+  }
+}
 
 stars.forEach(star => {
   star.setAttribute('tabindex', '0');
@@ -102,18 +130,25 @@ stars.forEach(star => {
   star.addEventListener('click', () => {
     selectedRating = +star.dataset.value;
     stars.forEach(s => s.classList.toggle('selected', +s.dataset.value <= selectedRating));
+    thankMsg.textContent = '';
+    openReviewPanel();
   });
 });
+
+reviewPanelClose.addEventListener('click', () => closeReviewPanel(true));
+reviewPanelOverlay.addEventListener('click', () => closeReviewPanel(true));
+
+if (submitReview) {
+  submitReview.addEventListener('click', () => {
+    closeReviewPanel(false);
+    openReviewModal();
+  });
+}
 
 function escapeHtml(str) {
   const div = document.createElement('div');
   div.textContent = str;
   return div.innerHTML;
-}
-
-function renderStarsText(rating) {
-  const rounded = Math.round(rating);
-  return '★'.repeat(rounded) + '☆'.repeat(5 - rounded);
 }
 
 function avatarColor(name) {
@@ -202,18 +237,6 @@ function closeReviewModal() {
   reviewModal.classList.remove('open');
   reviewModalOverlay.classList.remove('active');
   document.body.style.overflow = '';
-}
-
-if (submitReview) {
-  submitReview.addEventListener('click', () => {
-    if (!selectedRating) {
-      thankMsg.textContent = 'Veuillez choisir une note ✦';
-      thankMsg.style.color = '#c0392b';
-      return;
-    }
-    thankMsg.textContent = '';
-    openReviewModal();
-  });
 }
 
 reviewModalClose.addEventListener('click', closeReviewModal);
