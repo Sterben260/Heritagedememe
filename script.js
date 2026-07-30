@@ -127,12 +127,12 @@ stars.forEach(star => {
     starCaption.textContent = selectedRating ? captions[selectedRating] : 'Cliquez pour noter';
   });
 
-  star.addEventListener('click', () => {
-    selectedRating = +star.dataset.value;
-    stars.forEach(s => s.classList.toggle('selected', +s.dataset.value <= selectedRating));
-    thankMsg.textContent = '';
-    openReviewPanel();
-  });
+star.addEventListener('click', () => {
+  selectedRating = +star.dataset.value;
+  stars.forEach(s => s.classList.toggle('selected', +s.dataset.value <= selectedRating));
+  thankMsg.textContent = '';
+  setTimeout(openReviewPanel, 180);
+
 });
 
 reviewPanelClose.addEventListener('click', () => closeReviewPanel(true));
