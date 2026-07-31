@@ -132,7 +132,7 @@ star.addEventListener('click', () => {
   stars.forEach(s => s.classList.toggle('selected', +s.dataset.value <= selectedRating));
   thankMsg.textContent = '';
   setTimeout(openReviewPanel, 180);
-
+});
 });
 
 reviewPanelClose.addEventListener('click', () => closeReviewPanel(true));
