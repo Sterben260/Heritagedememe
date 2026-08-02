@@ -7,8 +7,10 @@ window.addEventListener('scroll', () => {
 const burgerBtn  = document.getElementById('burgerBtn');
 const navLinks   = document.querySelector('.navbar__links');
 const navOverlay = document.getElementById('navOverlay');
+const navLinksClose = document.getElementById('navLinksClose');
+navLinksClose.addEventListener('click', closeMenu);
 
-function closeMenu() {
+function closeMenu() {overlay
   navLinks.classList.remove('open');
   burgerBtn.classList.remove('open');
   burgerBtn.setAttribute('aria-expanded', 'false');
