@@ -152,6 +152,7 @@ justify-content:center;
 
 gap:8px;
 
+touch-action: manipulation;
 }
 
 .navbar__burger span{
@@ -168,7 +169,6 @@ transition:.35s;
 
 }
 
-
 .navbar__links{
 
 position:fixed;
@@ -180,9 +180,8 @@ right:0;
 width:280px;
 
 height:calc(100vh - 90px);
-  
 height:calc(100dvh - 90px);
-  
+
 background:var(--cream);
 
 display:flex;
@@ -191,9 +190,9 @@ flex-direction:column;
 
 justify-content: space-between;
 
-padding:45px 0 45px;
+padding:24px 16px;
 
-gap:0;
+gap:10px;
 
 list-style:none;
 
@@ -203,8 +202,10 @@ transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
 box-shadow:-8px 0 30px rgba(0,0,0,.08);
 border-radius: 20px 0 0 20px;
-overflow: hidden;
+overflow-y: auto;
+overflow-x: hidden;
 }
+
 
 .navbar__links.open{
 
@@ -217,41 +218,51 @@ transform: translateX(0);
   padding: 0;
 }
 
-
-.navbar__links li {
-  border-bottom: 1px solid rgba(196,155,73,0.15);
-}
-
-.navbar__links li:last-child {
-  border-bottom: none;
+.navbar__links li:not(.navbar__links-flower) {
+  flex-shrink: 0;
 }
 
 .navbar__links a{
 
-display: block;
+display: flex;
+align-items: center;
+justify-content: space-between;
 width: 100%;
-padding: 16px 45px;
+padding: 16px 20px;
 box-sizing: border-box;
+
+background: var(--gold-light);
+border: 2px solid var(--brown-dark);
+border-radius: 14px;
+box-shadow: 3px 3px 0 var(--brown-dark);
 
 text-decoration:none;
 
-font-size:15px;
+font-size:14px;
 
-letter-spacing:.08em;
+letter-spacing:.06em;
 
-color:#3b2415;
+color: var(--brown-dark);
 
-font-weight:500;
+font-weight:600;
 
-transition: background-color 0.25s ease, color 0.25s ease;
+transition: transform 0.15s ease, box-shadow 0.15s ease;
 
+touch-action: manipulation;  
 }
 
-.navbar__links a:hover{
+.navbar__links a::after {
+  content: '→';
+  font-size: 16px;
+  margin-left: 8px;
+}
 
-color:#c49b49;
-background-color: rgba(196,155,73,0.08);
-
+.navbar__links a:hover,
+.navbar__links a:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--brown-dark);
+  color: var(--brown-dark);
+  background: var(--gold-light);
 }
 
 .navbar__links-flower {
@@ -402,15 +413,18 @@ background-color: rgba(196,155,73,0.08);
     width:34px;
 }
 
+
 .navbar__links{
     top:80px;
-    width:100%;
+    width:85%;
+    max-width: 340px;
     height:calc(100vh - 80px);
     height:calc(100dvh - 80px);
-    padding:40px 0;
-    border-radius: 0;
+    padding:24px 16px;
+    border-radius: 20px 0 0 20px;
     transform: translateX(100%);
 }
+  
 .navbar__links-flower-img {
   max-width: 180px;
 }
