@@ -180,7 +180,9 @@ right:0;
 width:280px;
 
 height:calc(100vh - 90px);
-
+  
+height:calc(100dvh - 90px);
+  
 background:var(--cream);
 
 display:flex;
@@ -404,6 +406,7 @@ background-color: rgba(196,155,73,0.08);
     top:80px;
     width:100%;
     height:calc(100vh - 80px);
+    height:calc(100dvh - 80px);
     padding:40px 0;
     border-radius: 0;
     transform: translateX(100%);
