@@ -13,6 +13,7 @@ function closeMenu() {
   burgerBtn.classList.remove('open');
   burgerBtn.setAttribute('aria-expanded', 'false');
   navOverlay.classList.remove('active');
+  document.body.style.overflow = '';
 }
 
 function openMenu() {
@@ -20,6 +21,7 @@ function openMenu() {
   burgerBtn.classList.add('open');
   burgerBtn.setAttribute('aria-expanded', 'true');
   navOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
 }
 
 burgerBtn.addEventListener('click', () => {
