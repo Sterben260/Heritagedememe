@@ -10,7 +10,7 @@ const navOverlay = document.getElementById('navOverlay');
 const navLinksClose = document.getElementById('navLinksClose');
 navLinksClose.addEventListener('click', closeMenu);
 
-function closeMenu() {overlay
+function closeMenu() {
   navLinks.classList.remove('open');
   burgerBtn.classList.remove('open');
   burgerBtn.setAttribute('aria-expanded', 'false');
