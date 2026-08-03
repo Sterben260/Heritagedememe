@@ -122,6 +122,14 @@ justify-content:center;
 
 align-items:center;
 
+background: var(--brown-dark);
+
+padding: 10px 24px;
+
+border-radius: 999px;
+
+box-shadow: 0 4px 16px rgba(44,26,14,0.15);
+
 }
 
 .navbar__burger{
@@ -427,6 +435,10 @@ touch-action: manipulation;
 }
 
 
+.navbar__logo-link{
+  padding: 8px 18px;
+}
+  
 .navbar__links{
     top:80px;
     width:85%;
