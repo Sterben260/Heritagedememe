@@ -104,6 +104,7 @@ padding:0 40px;
 
 }
 
+
 .navbar__logo{
 
 height:72px;
@@ -111,6 +112,8 @@ height:72px;
 width:auto;
 
 display:block;
+
+filter: drop-shadow(0 3px 6px rgba(44,26,14,0.35));
 
 }
 
@@ -121,14 +124,6 @@ display:flex;
 justify-content:center;
 
 align-items:center;
-
-background: var(--brown-dark);
-
-padding: 10px 24px;
-
-border-radius: 999px;
-
-box-shadow: 0 4px 16px rgba(44,26,14,0.15);
 
 }
 
@@ -434,10 +429,6 @@ touch-action: manipulation;
     width:34px;
 }
 
-
-.navbar__logo-link{
-  padding: 8px 18px;
-}
   
 .navbar__links{
     top:80px;
