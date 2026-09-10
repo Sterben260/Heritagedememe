@@ -682,7 +682,7 @@ touch-action: manipulation;
 /* TEASER BRUNCH (page d'accueil) */
 .brunch-teaser {
   padding: 90px 0;
-  background: linear-gradient(135deg, var(--brown-dark) 0%, #1a0d06 100%);
+  background: #CC743D
 }
 .brunch-teaser__inner {
   max-width: 600px;
