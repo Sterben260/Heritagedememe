@@ -746,3 +746,18 @@ touch-action: manipulation;
   color: rgba(232,217,181,0.6);
   margin-top: 40px;
 }
+
+.brunch-teaser {
+  background: #E3C18E;
+}
+
+.brunch-teaser .section-eyebrow,
+.brunch-teaser .section-title,
+.brunch-teaser__desc,
+.brunch-teaser .btn--outline {
+  color: var(--brown-dark);
+}
+
+.brunch-teaser .btn--outline {
+  border-color: var(--brown-dark);
+}
