@@ -1,1 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Brunch Experience – Héritage de Mémé</title>
+  <meta name="description" content="Vivez The Brunch Experience : un moment suspendu entre saveurs sucrées et salées, tous les week-ends chez Héritage de Mémé.">
+  <link rel="icon" type="image/png" href="Heritage_de_Meme_Logo_Premium.png">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
 
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo-link">
+        <img src="Heritage_de_Meme_Logo_Complet.png" alt="Héritage de Mémé" class="navbar__logo">
+      </a>
+      <button class="navbar__burger" id="burgerBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <ul class="navbar__links">
+      <li class="navbar__links-header">
+        <img src="Heritage_de_Meme_Logo_Premium.png" alt="" class="navbar__links-logo" />
+        <span class="navbar__links-title">Héritage de Mémé</span>
+        <button class="navbar__links-close" id="navLinksClose" aria-label="Fermer le menu">✕</button>
+      </li>
+
+      <li><a href="index.html#about">Notre histoire</a></li>
+      <li><a href="index.html#menu">Nos créations</a></li>
+      <li><a href="brunch.html" class="active" aria-current="page">The Brunch Experience</a></li>
+      <li><a href="index.html#values">Valeurs</a></li>
+      <li><a href="equipe.html">Notre équipe</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+
+      <li class="navbar__links-copy">&copy; 2026 Héritage de Mémé</li>
+    </ul>
+  </nav>
+
+  <div class="navbar__overlay" id="navOverlay"></div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <p class="hero__eyebrow" translate="no">Héritage de Mémé</p>
+      <h1 class="hero__title" translate="no">The Brunch<br/>Experience</h1>
+      <p class="hero__sub" translate="no">Un moment suspendu, entre saveurs sucrées et salées, pensé pour sublimer vos week-ends.</p>
+      <a href="#details" class="btn btn--primary">Découvrir l'expérience</a>
+    </div>
+    <div class="hero__scroll-hint"><span></span></div>
+  </section>
+
+  <!-- PRÉSENTATION -->
+  <section class="about" id="details">
+    <div class="container">
+      <div class="about__grid">
+        <div class="about__visual">
+          <div class="about__img-frame">
+            <div class="about__img-placeholder"><span>🥐</span></div>
+          </div>
+        </div>
+        <div class="about__text">
+          <p class="section-eyebrow">L'expérience</p>
+          <h2 class="section-title">Un brunch pensé comme un art de vivre</h2>
+          <p class="about__body">The Brunch Experience, c'est une parenthèse gourmande où se mêlent pâtisseries signature, mets salés raffinés et boissons chaudes, dans un cadre pensé pour prendre son temps.</p>
+          <p class="about__body">Chaque détail est soigné pour transformer un simple repas en véritable souvenir — entre amis, en famille, ou pour marquer une occasion particulière.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HORAIRES -->
+  <section class="brunch-schedule">
+    <div class="container">
+      <p class="section-eyebrow center">Quand nous rejoindre</p>
+      <h2 class="section-title center">Disponible tous les week-ends</h2>
+      <div class="brunch-schedule__badge">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        <div>
+          <p class="brunch-schedule__days">Samedi &amp; Dimanche</p>
+          <p class="brunch-schedule__hint">Horaires communiqués lors de la réservation</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CE QUI EST INCLUS -->
+  <section class="menu">
+    <div class="container">
+      <p class="section-eyebrow center">L'expérience inclut</p>
+      <h2 class="section-title center">Une formule complète</h2>
+      <div class="menu__grid">
+        <article class="menu-card">
+          <div class="menu-card__img">🧁</div>
+          <div class="menu-card__body">
+            <h3 class="menu-card__name">Pâtisseries signature</h3>
+            <p class="menu-card__desc">Une sélection de nos créations sucrées, préparées le jour même.</p>
+          </div>
+        </article>
+        <article class="menu-card">
+          <div class="menu-card__img">🥗</div>
+          <div class="menu-card__body">
+            <h3 class="menu-card__name">Formule salée</h3>
+            <p class="menu-card__desc">Des mets raffinés pour équilibrer la gourmandise sucrée.</p>
+          </div>
+        </article>
+        <article class="menu-card">
+          <div class="menu-card__img">☕</div>
+          <div class="menu-card__body">
+            <h3 class="menu-card__name">Boissons chaudes & fraîches</h3>
+            <p class="menu-card__desc">Café, thé et jus frais pour accompagner chaque instant.</p>
+          </div>
+        </article>
+      </div>
+      <p class="brunch-note">Détails et tarifs communiqués lors de la prise de contact.</p>
+    </div>
+  </section>
+
+  <!-- CTA RÉSERVATION -->
+  <section class="contact-banner">
+    <div class="container">
+      <p class="section-eyebrow center">Réservation</p>
+      <h2 class="section-title center">Envie de vivre l'expérience ?</h2>
+      <p class="contact-banner__sub">Réservez votre place pour le prochain Brunch Experience, directement par WhatsApp.</p>
+      <div class="contact-banner__actions">
+        <a href="https://wa.me/COLLEZ_NUMERO_ICI?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20le%20Brunch%20Experience" target="_blank" rel="noopener" class="btn btn--primary btn--whatsapp">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.48 1.32 4.99L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m0 1.67a8.2 8.2 0 0 1 5.83 2.42 8.2 8.2 0 0 1 2.41 5.82c0 4.55-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.38c0-4.55 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.86.84-.86 2.05 0 1.21.88 2.38 1 2.54.12.17 1.75 2.67 4.25 3.74.6.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.07-.1-.24-.16-.5-.29-.27-.13-1.57-.78-1.82-.86-.24-.09-.42-.13-.6.13-.17.26-.68.86-.83 1.03-.16.17-.31.19-.57.06-.27-.13-1.13-.42-2.16-1.34-.8-.71-1.34-1.6-1.5-1.86-.16-.27-.02-.42.12-.55.12-.12.27-.31.4-.47.13-.16.17-.27.26-.45.09-.19.04-.35-.02-.48-.06-.13-.6-1.46-.83-2C9.09 7.4 8.9 7.4 8.72 7.4c-.14-.01-.31-.01-.19-.01Z"/></svg>
+          Réserver sur WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div class="footer__logo-col">
+          <img src="Heritage_de_Meme_Logo_Premium.png" alt="Héritage de Mémé" class="footer__logo" loading="lazy"/>
+          <span class="footer__tagline">Food & Nutrition · Luxury Taste</span>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Nous contacter</h4>
+          <ul class="footer__list">
+            <li>
+              <svg width="15" height="15" fill="none" stroke="#c49b49" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5.5A1.5 1.5 0 0 1 4.5 4h1.379a1.5 1.5 0 0 1 1.394.944l.818 2.045a1.5 1.5 0 0 1-.343 1.641l-.9.9a11.042 11.042 0 0 0 5.622 5.622l.9-.9a1.5 1.5 0 0 1 1.641-.343l2.045.818A1.5 1.5 0 0 1 20 16.12V17.5A1.5 1.5 0 0 1 18.5 19C10.492 19 5 13.508 5 5.5Z"/></svg>
+              676 29 25 93
+            </li>
+            <li>
+              <svg width="15" height="15" fill="none" stroke="#c49b49" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0-9.75 6.75L2.25 6.75"/></svg>
+              <a href="mailto:Heritagedememe@gmail.com">Heritagedememe@gmail.com</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__col footer__social-col">
+          <h4 class="footer__col-title">Suivez-nous</h4>
+          <div class="footer__socials">
+            <a href="https://www.instagram.com/heritage_de_meme?igsh=MWkwZHNhcWUxOTZhMQ%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram" class="footer__social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#c49b49" stroke-width="1.6" width="20" height="20"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="#c49b49" stroke="none"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@heritage.de.meme?_r=1&_t=ZT-97amTNqGWh4" target="_blank" rel="noopener" aria-label="TikTok" class="footer__social-btn">
+              <svg viewBox="0 0 24 24" fill="#c49b49" width="20" height="20"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07Z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__divider"><span class="footer__divider-ornament">✦</span></div>
+      <div class="footer__bottom">
+        <p class="footer_location"> Cameroun</p>
+        <ul class="footer__legal">
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#">Politique de confidentialité</a></li>
+          <li><a href="#">CGV</a></li>
+        </ul>
+        <p class="footer__copy">&copy; 2026 Héritage de Mémé. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
