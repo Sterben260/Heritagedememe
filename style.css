@@ -677,3 +677,72 @@ touch-action: manipulation;
 .review-panel__title { font-family: var(--font-display); font-size: 24px; color: var(--brown-dark); margin-bottom: 20px; text-align: center; }
 .review-panel__optional { font-family: var(--font-body); font-size: 13px; color: var(--brown-light); font-weight: 400; }
 .review-panel__submit { width: 100%; margin-top: 16px; }
+
+
+/* TEASER BRUNCH (page d'accueil) */
+.brunch-teaser {
+  padding: 90px 0;
+  background: linear-gradient(135deg, var(--brown-dark) 0%, #1a0d06 100%);
+}
+.brunch-teaser__inner {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+.brunch-teaser .section-eyebrow { color: var(--gold); }
+.brunch-teaser .section-title { color: var(--cream); }
+.brunch-teaser__desc {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(232,217,181,0.75);
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+.brunch-teaser .btn--outline {
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+.brunch-teaser .btn--outline:hover {
+  background: var(--gold);
+  color: var(--brown-dark);
+}
+
+/* HORAIRES (page brunch.html) */
+.brunch-schedule {
+  padding: 80px 0;
+  background: var(--cream-dark);
+  text-align: center;
+}
+.brunch-schedule__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--white);
+  border: 1px solid rgba(196,155,73,0.2);
+  border-radius: 16px;
+  padding: 24px 32px;
+  margin-top: 32px;
+  box-shadow: 0 8px 24px rgba(44,26,14,0.06);
+  color: var(--gold);
+}
+.brunch-schedule__days {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--brown-dark);
+  text-align: left;
+}
+.brunch-schedule__hint {
+  font-size: 12px;
+  color: var(--brown-light);
+  text-align: left;
+  margin-top: 4px;
+}
+
+/* NOTE tarifs (page brunch.html) */
+.brunch-note {
+  text-align: center;
+  font-size: 13px;
+  font-style: italic;
+  color: rgba(232,217,181,0.6);
+  margin-top: 40px;
+}
